@@ -1,3 +1,5 @@
+import com.sun.security.jgss.GSSUtil;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -7,7 +9,7 @@ public class Main {
         int contador = 0;
         for (String s : tarefas){
             contador++;
-            System.out.println("= " + contador + " " + s);
+            System.out.println("= " + contador + " - " + s);
         }
     }
     public void menu(){
@@ -32,12 +34,16 @@ public class Main {
             menu.menu();
             System.out.println("= Digite sua escolha: ");
             opcao = scan.nextInt();
-
+            scan.nextLine();
             switch (opcao){
                 case 1:
                     System.out.println("============================== TAREFAS ==============================");
-                    int contador = 0;
-                    menu.listarTarefas(tarefas);
+                    if (tarefas.isEmpty()){
+                        System.out.println("= Agenda vazia, adicione algo!");
+                        System.out.println("=================================================================");
+                    }else {
+                        menu.listarTarefas(tarefas);
+                    }
                     break;
                 case 2:
                     System.out.println("=========================== ADICIONAR TAREFA ===========================");
@@ -49,18 +55,24 @@ public class Main {
                 case 3:
                     System.out.println("=========================== ATUALIZAR TAREFA ===========================");
                     System.out.println("=========================== TAREFAS ===========================");
-                    menu.listarTarefas(tarefas);
-                    ///  COLOCAR ESTE BLOCO LOGO APÓS A LISTAGEM DA TAREFA DENTRO DE UM DO-WHILE
-                    System.out.println("= Por favor digite o número a tarefa que deseja atualizar: ");
-                    posicaoTarefa = scan.nextInt();
-                    for (String s : tarefas){
-                        if (tarefas.indexOf(s) + 1 == posicaoTarefa){
-                            System.out.println("= Tarefa: " + s + " selecionada!");
-                            System.out.println("= Por favor digite a atualização: ");
-                            tarefa = scan.nextLine();
-                            tarefas.add(tarefa);
-                            System.out.println("= Tarefa atualizada com sucesso!");
-                            break;
+                    if (tarefas.isEmpty()){
+                        System.out.println("= Agenda vazia, adicione algo!");
+                        System.out.println("=================================================================");
+                    }else {
+                        menu.listarTarefas(tarefas);
+                        ///  COLOCAR ESTE BLOCO LOGO APÓS A LISTAGEM DA TAREFA DENTRO DE UM DO-WHILE
+                        System.out.println("= Por favor digite o número a tarefa que deseja atualizar: ");
+                        posicaoTarefa = scan.nextInt();
+                        scan.nextLine();
+                        for (String s : tarefas){
+                            if (tarefas.indexOf(s) + 1 == posicaoTarefa){
+                                System.out.println("= Tarefa: " + s + " - selecionada!");
+                                System.out.println("= Por favor digite a atualização: ");
+                                tarefa = scan.nextLine();
+                                tarefas.set(tarefas.indexOf(s), tarefa);
+                                System.out.println("= Tarefa atualizada com sucesso!");
+                                break;
+                            }
                         }
                     }
                     ///  COLOCAR ESTE BLOCO LOGO APÓS A LISTAGEM DA TAREFA DENTRO DE UM DO-WHILE
