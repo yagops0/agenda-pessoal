@@ -1,5 +1,74 @@
-public class Main {
-    public static void main(String[] args) {
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
+public class Main {
+    public void listarTarefas(List<String> tarefas){
+        int contador = 0;
+        for (String s : tarefas){
+            contador++;
+            System.out.println("= " + contador + " " + s);
+        }
+    }
+    public void menu(){
+        System.out.println("========================= AGENDA PESSOAL =========================");
+        System.out.println("= Escolha o que deseja fazer: ");
+        System.out.println("= 1 - Listar tarefas/obejetivos");
+        System.out.println("= 2 - Adicionar uma(um) nova(o) tarefa/obejtivo");
+        System.out.println("= 3 - Atualizar alguma tarefa");
+        System.out.println("= 4 - Deletar alguma tarefa");
+        System.out.println("=================================================================");
+    }
+
+    public static void main(String[] args) {
+        Main menu = new Main();
+        Scanner scan = new Scanner(System.in);
+        List<String> tarefas = new ArrayList<>();
+        String tarefa;
+        int opcao, posicaoTarefa;
+        char continuar;
+
+        do {
+            menu.menu();
+            System.out.println("= Digite sua escolha: ");
+            opcao = scan.nextInt();
+
+            switch (opcao){
+                case 1:
+                    System.out.println("============================== TAREFAS ==============================");
+                    int contador = 0;
+                    menu.listarTarefas(tarefas);
+                    break;
+                case 2:
+                    System.out.println("=========================== ADICIONAR TAREFA ===========================");
+                    System.out.println("= Por favor digite a nova tarefa: ");
+                    tarefa = scan.nextLine();
+                    tarefas.add(tarefa);
+                    break;
+
+                case 3:
+                    System.out.println("=========================== ATUALIZAR TAREFA ===========================");
+                    System.out.println("=========================== TAREFAS ===========================");
+                    menu.listarTarefas(tarefas);
+                    ///  COLOCAR ESTE BLOCO LOGO APÓS A LISTAGEM DA TAREFA DENTRO DE UM DO-WHILE
+                    System.out.println("= Por favor digite o número a tarefa que deseja atualizar: ");
+                    posicaoTarefa = scan.nextInt();
+                    for (String s : tarefas){
+                        if (tarefas.indexOf(s) + 1 == posicaoTarefa){
+                            System.out.println("= Tarefa: " + s + " selecionada!");
+                            System.out.println("= Por favor digite a atualização: ");
+                            tarefa = scan.nextLine();
+                            tarefas.add(tarefa);
+                            System.out.println("= Tarefa atualizada com sucesso!");
+                            break;
+                        }
+                    }
+                    ///  COLOCAR ESTE BLOCO LOGO APÓS A LISTAGEM DA TAREFA DENTRO DE UM DO-WHILE
+            }
+
+
+            System.out.println("= Deseja continuar na agenda (s - sim / n - não)? ");
+            continuar = scan.nextLine().charAt(0);
+        }while (Character.toLowerCase(continuar) == 's');
     }
 }
