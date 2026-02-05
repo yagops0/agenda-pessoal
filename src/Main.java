@@ -30,7 +30,7 @@ public class Main {
         List<String> tarefas = new ArrayList<>();
         String tarefa;
         int opcao, posicaoTarefa;
-        char continuar;
+        char continuar, confirmar;
 
         do {
             menu.menu();
@@ -74,7 +74,7 @@ public class Main {
 
                 case 3:
                     System.out.println("=========================== ATUALIZAR TAREFA ===========================");
-                    System.out.println("=========================== TAREFAS ===========================");
+                    System.out.println("============================== TAREFAS ===============================");
                     if (tarefas.isEmpty()){
                         System.out.println("= Agenda vazia, adicione algo!");
                         System.out.println("=================================================================");
@@ -107,6 +107,48 @@ public class Main {
 
                     }
                     break;
+
+                case 4:
+                    System.out.println("=========================== DELETAR TAREFA ===========================");
+                    System.out.println("============================== TAREFAS ===============================");
+                    do {
+                        if (tarefas.isEmpty()){
+                            System.out.println("= Ainda não há tarefas na agenda!");
+                            System.out.println("=================================================================");
+                        }else {
+
+                            menu.listarTarefas(tarefas);
+                            System.out.println("=================================================================");
+                            System.out.println("= Digite o número da tarefa que deseja deletar: ");
+                            posicaoTarefa = scan.nextInt();
+                            Thread.sleep(1000);
+                            scan.nextLine();
+                            System.out.println("Tarefa: " + posicaoTarefa + " - " + tarefas.get(posicaoTarefa - 1) + " selecionada!.");
+                            System.out.println("= Deseja realmente excluir esta tarefa (s - sim / n - não)?");
+                            confirmar = scan.nextLine().charAt(0);
+                            if (Character.toLowerCase(confirmar) == 's'){
+                                Thread.sleep(1000);
+                                System.out.println("=================================================================");
+                                System.out.println("= Deletando tarefa...");
+                                Thread.sleep(1000);
+                                System.out.println("=================================================================");
+                                tarefas.remove(posicaoTarefa - 1);
+                                System.out.println("= Tarefa deletada com sucesso!");
+                            }else if (Character.toLowerCase(confirmar) == 'n'){
+                                Thread.sleep(1000);
+                                System.out.println("= Não foi possível deletar a tarefa.");
+                            }else {
+                                Thread.sleep(1000);
+                                System.out.println("= Ocorreu um erro, opção inválida.");
+                            }
+                            System.out.println("=================================================================");
+                            Thread.sleep(1000);
+                        }
+
+                        System.out.println("= Deseja deletar mais alguma tarefa (s - sim / n - não)?");
+                        continuar = scan.nextLine().charAt(0);
+
+                    }while(Character.toLowerCase(continuar) == 's');
                     ///  COLOCAR ESTE BLOCO LOGO APÓS A LISTAGEM DA TAREFA DENTRO DE UM DO-WHILE
             }
 
