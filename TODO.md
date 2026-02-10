@@ -8,7 +8,7 @@ De começo haverá apenas um menu interativo básico para o CRUD das tarefas/obj
 ## FASE 1 - SINTAXE BÁSICA E CONTROLE DE FLUXO
 Este fase será a implementação básica do projeto, no momento sem classes
 ### O que fazer?
-- [ ] Uma lista para armazenar as tarefas
+- [x] Uma lista para armazenar as tarefas
 - [ ] CRUD simples de tarefas
-- [ ] Um menu interativo utilizando loops e estrutura condicionais
-- [ ] Utilizar tratamento de erros básico para caso haja um input inválido ou coisa do tipo
+- [x] Um menu interativo utilizando loops e estrutura condicionais
+- [x] Utilizar tratamento de erros básico para caso haja um input inválido ou coisa do tipo
