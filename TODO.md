@@ -9,6 +9,17 @@ De começo haverá apenas um menu interativo básico para o CRUD das tarefas/obj
 Este fase será a implementação básica do projeto, no momento sem classes
 ### O que fazer?
 - [x] Uma lista para armazenar as tarefas
-- [ ] CRUD simples de tarefas
+- [x] CRUD simples de tarefas
 - [x] Um menu interativo utilizando loops e estrutura condicionais
-- [x] Utilizar tratamento de erros básico para caso haja um input inválido ou coisa do tipo
+- [x Utilizar tratamento de erros básico para caso haja um input inválido ou coisa do tipo
+
+## FASE 2 - POO APLICADA CORRETAMENTE
+
+Essa fase será implementação do paradigma de POO para uma melhor legibilidade do código e desacoplamento de código da classe Main
+ ### O que fazer?
+- [ ] Criar classe tarefa
+- [ ] Separar as responsabilidades por pacotes
+  - [ ] entities - será o pacote responsável pela camada de modelo
+  - [ ] service - o pacote para as regras de negócios
+  - [ ] ui/view - será onde os menus serão criados
+- [ ] Encapsulamento
