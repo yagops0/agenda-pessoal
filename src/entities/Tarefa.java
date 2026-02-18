@@ -1,26 +1,25 @@
 package entities;
 
 public class Tarefa {
+    private static int contador = 1; // simulando um AUTO_INCREMENT - UTILIZANDO UMA VÁRIAVEL ESTÁTICA POIS ELA PERTENCE A CLASSE NÃO A UMA INSTÂNCIA
+
     private int id;
     private String descricao;
     private boolean status;
 
     public Tarefa(){
-
+        this.id = contador++;
     }
 
-    public Tarefa(int id, String descricao, boolean status) {
-        this.id = id;
+    public Tarefa(String descricao, boolean status) {
+
         this.descricao = descricao;
         this.status = status;
+        this.id = contador++;
     }
 
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getDescricao() {
@@ -41,8 +40,8 @@ public class Tarefa {
 
     @Override
     public String toString(){
-        return "= Tarefa: " + this.id +
-                " - " + this.descricao +
-                " - Status: " + this.status;
+        return "= Tarefa: " + id +
+                " - " + descricao +
+                " - Status: " + status;
     }
 }

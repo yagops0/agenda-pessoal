@@ -1,16 +1,17 @@
 import com.sun.security.jgss.GSSUtil;
+import entities.Tarefa;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class Main {
-    public void listarTarefas(List<String> tarefas) throws InterruptedException {
-        int contador = 0;
-        for (String s : tarefas){
-            contador++;
+    public void listarTarefas(List<Tarefa> tarefas) throws InterruptedException {
+
+        for (Tarefa t : tarefas){
             Thread.sleep(1000);
-            System.out.println("= " + contador + " - " + s);
+            System.out.println(t.toString());
         }
     }
     public void menu(){
@@ -27,10 +28,10 @@ public class Main {
     public static void main(String[] args) throws InterruptedException {
         Main menu = new Main();
         Scanner scan = new Scanner(System.in);
-        List<String> tarefas = new ArrayList<>();
-        String tarefa;
-        int opcao, posicaoTarefa, opcaoDelete;
+        List<Tarefa> tarefas = new ArrayList<>();
+        int opcao, posicaoTarefa, opcaoDelete, escolhaStatus;
         char continuar, confirmar;
+        String descricaoTarefa;
         boolean inputValido = false; // 1. Começa como falso (ainda não temos um dado bom)
 
         while (!inputValido){  // 2. O "!" significa "NÃO". Ou seja: "Enquanto NÃO for válido..."
@@ -60,7 +61,9 @@ public class Main {
                             do{
 
                                 System.out.println("= Por favor digite a nova tarefa: ");
-                                tarefa = scan.nextLine();
+                                System.out.println("= Digite a descrição da tarefa: ");
+                                descricaoTarefa = scan.nextLine();
+                                Tarefa tarefa = new Tarefa(descricaoTarefa, false);
                                 tarefas.add(tarefa);
                                 System.out.println("=================================================================");
                                 Thread.sleep(1000);
@@ -85,18 +88,31 @@ public class Main {
                                 menu.listarTarefas(tarefas);
                                 ///  COLOCAR ESTE BLOCO LOGO APÓS A LISTAGEM DA TAREFA DENTRO DE UM DO-WHILE
                                 do {
-                                    System.out.println("= Por favor digite o número a tarefa que deseja atualizar: ");
+
+                                    System.out.println("= Por favor digite o número da tarefa que deseja atualizar: ");
                                     posicaoTarefa = scan.nextInt();
                                     scan.nextLine();
-                                    for (String s : tarefas){
-                                        if (tarefas.indexOf(s) + 1 == posicaoTarefa){
-                                            System.out.println("= Tarefa: " + s + " - selecionada!");
+                                    for (Tarefa t : tarefas){
+                                        if (t.getId() == posicaoTarefa){
+                                            System.out.println("= Tarefa: " + t.getDescricao() + " - selecionada!");
                                             System.out.println("= Por favor digite a atualização: ");
-                                            tarefa = scan.nextLine();
+                                            System.out.println("= Digite a descrição atualizada: ");
+                                            t.setDescricao(scan.nextLine());
+                                            System.out.println("= Escolha o status da tarefa atualizado (1 - Concluído / 2 - A fazer: ");
+                                            escolhaStatus = scan.nextInt();
+                                            scan.nextLine();
+                                            if (escolhaStatus == 1){
+                                                t.setStatus(true);
+                                            }else if (escolhaStatus == 2){
+                                                t.setStatus(false);
+                                            }
+                                            else {
+                                                System.out.println("= Opção inválida");
+                                            }
                                             Thread.sleep(1000);
                                             System.out.println("= Atualizando tarefa...");
                                             Thread.sleep(1000);
-                                            tarefas.set(tarefas.indexOf(s), tarefa);
+                                            tarefas.set(tarefas.indexOf(t), t);
                                             System.out.println("=================================================================");
                                             System.out.println("= Tarefa atualizada com sucesso!");
                                             System.out.println("=================================================================");
@@ -136,16 +152,17 @@ public class Main {
                                             posicaoTarefa = scan.nextInt();
                                             Thread.sleep(1000);
                                             scan.nextLine();
-                                            System.out.println("= Tarefa: " + posicaoTarefa + " - " + tarefas.get(posicaoTarefa - 1) + " selecionada!.");
+                                            System.out.println("= Tarefa: " + posicaoTarefa + " - " + tarefas.get(tarefas.indexOf(posicaoTarefa)) + " selecionada!.");
                                             System.out.println("= Deseja realmente excluir esta tarefa (s - sim / n - não)?");
                                             confirmar = scan.nextLine().charAt(0);
+                                            scan.nextLine();
                                             if (Character.toLowerCase(confirmar) == 's'){
                                                 Thread.sleep(1000);
                                                 System.out.println("=================================================================");
                                                 System.out.println("= Deletando tarefa...");
                                                 Thread.sleep(1000);
                                                 System.out.println("=================================================================");
-                                                tarefas.remove(posicaoTarefa - 1);
+                                                tarefas.remove(posicaoTarefa);
                                                 System.out.println("= Tarefa deletada com sucesso!");
                                             }else if (Character.toLowerCase(confirmar) == 'n'){
                                                 Thread.sleep(1000);
