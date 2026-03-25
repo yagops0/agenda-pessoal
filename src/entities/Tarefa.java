@@ -5,13 +5,13 @@ public class Tarefa {
 
     private int id;
     private String descricao;
-    private boolean status;
+    private StatusTarefa status;
 
     public Tarefa(){
         this.id = contador++;
     }
 
-    public Tarefa(String descricao, boolean status) {
+    public Tarefa(String descricao, StatusTarefa status) {
 
         this.descricao = descricao;
         this.status = status;
@@ -30,11 +30,11 @@ public class Tarefa {
         this.descricao = descricao;
     }
 
-    public boolean isStatus() {
-        return status;
+    public String getStatusTarefa(){
+        return status.toString();
     }
 
-    public void setStatus(boolean status) {
+    public void setStatus(StatusTarefa status) {
         this.status = status;
     }
 

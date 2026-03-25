@@ -6,12 +6,12 @@ De começo haverá apenas um menu interativo básico para o CRUD das tarefas/obj
 
 
 ## FASE 1 - SINTAXE BÁSICA E CONTROLE DE FLUXO
-Este fase será a implementação básica do projeto, no momento sem classes
+Este fase será a implementação básica do projeto
 ### O que fazer?
-- [x] Uma lista para armazenar as tarefas
-- [x] CRUD simples de tarefas
-- [x] Um menu interativo utilizando loops e estrutura condicionais
-- [x] Utilizar tratamento de erros básico para caso haja um input inválido ou coisa do tipo
+- [ ] Uma lista para armazenar as tarefas
+- [ ] CRUD simples de tarefas
+- [ ] Um menu interativo utilizando loops e estrutura condicionais
+- [ ] Utilizar tratamento de erros básico para caso haja um input inválido ou coisa do tipo
 
 ## FASE 2 - POO APLICADA CORRETAMENTE
 
@@ -25,5 +25,5 @@ Essa fase será implementação do paradigma de POO para uma melhor legibilidade
 - [ ] Encapsulamento
 
 ### Regras de negócios
-- Tarefas não podem ser salvas/atualizadas estando com descrição
+- Tarefas não podem ser salvas/atualizadas estando sem descrição, porém sem status podem
 - O usuário precisa confirmar que deseja deletar ou atualizar uma tarefa
