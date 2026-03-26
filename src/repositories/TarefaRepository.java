@@ -6,8 +6,8 @@ import java.util.List;
 
 public interface TarefaRepository {
     void saveTarefa(Tarefa tarefa); // também será o método para a atualizaçõa
-    void deleteById(int id);
+    boolean delete(Tarefa tarefa);
     List<Tarefa> findAll();
-    Tarefa findById();
+    Tarefa findById(int id);
     void deleteAll();
 }
