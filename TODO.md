@@ -27,3 +27,10 @@ Essa fase será implementação do paradigma de POO para uma melhor legibilidade
 ### Regras de negócios
 - Tarefas não podem ser salvas/atualizadas estando sem descrição, porém sem status podem
 - O usuário precisa confirmar que deseja deletar ou atualizar uma tarefa
+
+
+## LINKS ÚTEIS
+- Try-Catch docs
+  - https://docs.oracle.com/javase/tutorial/essential/exceptions/handling.html
+- Exception docs
+  - https://docs.oracle.com/javase/specs/jls/se6/html/exceptions.html

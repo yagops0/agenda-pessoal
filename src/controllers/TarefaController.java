@@ -17,7 +17,9 @@ public class TarefaController {
 
             switch (opcaoMenu){
                 case 1:
+                    do {
 
+                    }while ();
                     break;
                 case 2:
 
