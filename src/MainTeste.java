@@ -1,6 +1,7 @@
 import entities.StatusTarefa;
 import entities.Tarefa;
 import services.TarefaService;
+import views.Menu;
 
 import java.util.Scanner;
 
@@ -60,6 +61,7 @@ public class MainTeste {
             System.out.println("===============================================");
         }
 
+        Menu.escolhasMenu();
 
         scan.close();
     }

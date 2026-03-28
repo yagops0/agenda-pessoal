@@ -60,6 +60,7 @@ public class TarefaService implements TarefaRepository {
 
     @Override
     public void deleteAll() {
+
         tarefas.clear();
     }
 }

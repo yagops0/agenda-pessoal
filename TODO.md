@@ -8,8 +8,8 @@ De começo haverá apenas um menu interativo básico para o CRUD das tarefas/obj
 ## FASE 1 - SINTAXE BÁSICA E CONTROLE DE FLUXO
 Este fase será a implementação básica do projeto
 ### O que fazer?
-- [ ] Uma lista para armazenar as tarefas
-- [ ] CRUD simples de tarefas
+- [x] Uma lista para armazenar as tarefas
+- [x] CRUD simples de tarefas
 - [ ] Um menu interativo utilizando loops e estrutura condicionais
 - [ ] Utilizar tratamento de erros básico para caso haja um input inválido ou coisa do tipo
 
@@ -17,12 +17,12 @@ Este fase será a implementação básica do projeto
 
 Essa fase será implementação do paradigma de POO para uma melhor legibilidade do código e desacoplamento de código da classe Main
 ### O que fazer?
-- [ ] Criar classe tarefa
-- [ ] Separar as responsabilidades por pacotes
-  - [ ] entities - será o pacote responsável pela camada de modelo
-  - [ ] service - o pacote para as regras de negócios
-  - [ ] ui/view - será onde os menus serão criados
-- [ ] Encapsulamento
+- [x] Criar classe tarefa
+- [x] Separar as responsabilidades por pacotes
+  - [x] entities - será o pacote responsável pela camada de modelo
+  - [x] service - o pacote para as regras de negócios
+  - [ ] ui/views - será onde os menus serão criados
+- [x] Encapsulamento
 
 ### Regras de negócios
 - Tarefas não podem ser salvas/atualizadas estando sem descrição, porém sem status podem
