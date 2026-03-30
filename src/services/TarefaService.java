@@ -59,8 +59,13 @@ public class TarefaService implements TarefaRepository {
     }
 
     @Override
-    public void deleteAll() {
+    public boolean deleteAll() {
+        try {
+            tarefas.clear();
+            return true;
+        }catch (Exception e){
+            return false;
+        }
 
-        tarefas.clear();
     }
 }

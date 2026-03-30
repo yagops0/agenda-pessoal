@@ -27,6 +27,7 @@ Essa fase será implementação do paradigma de POO para uma melhor legibilidade
 ### Regras de negócios
 - Tarefas não podem ser salvas/atualizadas estando sem descrição, porém sem status podem
 - O usuário precisa confirmar que deseja deletar ou atualizar uma tarefa
+- Todas as tarefas serão criados com STATUS: INCOMPLETA por padrão
 
 
 ## LINKS ÚTEIS

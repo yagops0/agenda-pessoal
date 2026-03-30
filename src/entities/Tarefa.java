@@ -5,10 +5,15 @@ public class Tarefa {
 
     private int id;
     private String descricao;
-    private StatusTarefa status;
+    private StatusTarefa status = StatusTarefa.INCOMPLETA;
 
     public Tarefa(){
         this.id = contador++;
+    }
+
+    public Tarefa(String descricao){
+        this.id = contador++;
+        this.descricao = descricao;
     }
 
     public Tarefa(String descricao, StatusTarefa status) {
@@ -41,7 +46,7 @@ public class Tarefa {
     @Override
     public String toString(){
         return "= Tarefa: " + id +
-                " - " + descricao +
+                " - Descrição: " + descricao +
                 " - Status: " + status;
     }
 }

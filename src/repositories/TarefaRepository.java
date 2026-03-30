@@ -9,5 +9,5 @@ public interface TarefaRepository {
     boolean delete(Tarefa tarefa);
     List<Tarefa> findAll();
     Tarefa findById(int id);
-    void deleteAll();
+    boolean deleteAll();
 }
