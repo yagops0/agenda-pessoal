@@ -1,5 +1,6 @@
 package controllers;
 
+import entities.StatusTarefa;
 import entities.Tarefa;
 import services.TarefaService;
 import views.Menu;
@@ -13,9 +14,45 @@ public class TarefaController {
     char continuarProgama, continuarExcluir, continuarAtualizar, continuarAdd;
     char confirmarExclusao, confirmarAtualizacao;
 
+    private void atualizarTarefa(){
+        int escolhaAtt, escolhaStatus;
+
+        System.out.println("= Digite o número da tarefa que deseja atualizar: ");
+        escolhaAtt = scan.nextInt();
+        Tarefa tarefa = tarefaService.findById(escolhaAtt);
+        scan.nextLine();
+        System.out.println("=============================================================");
+        System.out.println("= Tarefa:  " + tarefa.toString() + " escolhida.");
+        System.out.println("=============================================================");
+        System.out.println("= Digite a descrição atualizada da tarefa: ");
+        tarefa.setDescricao(scan.nextLine());
+        System.out.println("=============================================================");
+        System.out.println("= Escolha o status atualizado da tarefa (1 - completa / 2 - incompleta): ");
+        escolhaStatus = scan.nextInt();
+        if (escolhaStatus == 1){
+            tarefa.setStatus(StatusTarefa.COMPLETA);
+        } else if (escolhaStatus == 2) {
+            tarefa.setStatus(StatusTarefa.INCOMPLETA);
+        }else {
+            System.out.println("= Opção inválida!");
+        }
+        System.out.println("=============================================================");
+        scan.nextLine();
+        try {
+            tarefaService.saveTarefa(tarefa);
+            System.out.println("=============================================================");
+            System.out.println("===================== TAREFA ATUALIZADA =====================");
+            System.out.println("= Tarefa atualizada: " + tarefa);
+            System.out.println("=============================================================");
+        }catch (Exception e){
+            System.out.println("=============================================================");
+            System.out.println("= Não foi possível atualizar a tarefa!");
+            System.out.println("=============================================================");
+        }
+
+    }
 
     private void deleteTarefa(int escolha){
-        char confirmar;
         int id;
         switch (escolha){
             case 1:
@@ -28,15 +65,15 @@ public class TarefaController {
                 System.out.println("==========================================================================");
                 System.out.println("= Deseja excluir esta tarefa (s - sim / n - não)? ");
                 System.out.println("==========================================================================");
-                confirmar = scan.nextLine().charAt(0);
-                if ('s' == Character.toLowerCase(confirmar)){
+                confirmarExclusao = scan.nextLine().charAt(0);
+                if ('s' == Character.toLowerCase(confirmarExclusao)){
                     if (tarefaService.delete(tarefaService.findById(id))){
                         System.out.println("= TAREFA EXCLUÍDA COM SUCESSO!");
                         System.out.println("==========================================================================");
                     }else {
                         System.out.println("= OCORREU UM ERRO AO EXCLUIR A TAREFA!");
                     }
-                }else if('n' == Character.toLowerCase(confirmar)){
+                }else if('n' == Character.toLowerCase(confirmarExclusao)){
                     System.out.println("= Exclusão não confirmada, saindo do menu...");
                 }else {
                     System.out.println("= Opção inválida!");
@@ -46,10 +83,10 @@ public class TarefaController {
                 scan.nextLine();
                 System.out.println("==========================================================================");
                 System.out.println("= Deseja excluir todas as tarefas (s - sim / n - não)? ");
-                confirmar = scan.nextLine().charAt(0);
+                confirmarExclusao = scan.nextLine().charAt(0);
 
                 System.out.println("==========================================================================");
-                if ('s' == Character.toLowerCase(confirmar)){
+                if ('s' == Character.toLowerCase(confirmarExclusao)){
                     if (tarefaService.deleteAll()){
                         System.out.println("= Excluindo...");
                         System.out.println("==========================================================================");
@@ -58,7 +95,7 @@ public class TarefaController {
                     }else {
                         System.out.println("= Ocorreu um erro ao excluir as tarefas!");
                     }
-                } else if ('n' == Character.toLowerCase(confirmar)) {
+                } else if ('n' == Character.toLowerCase(confirmarExclusao)) {
                     System.out.println("= Exclusão não confirmada, saindo do menu...");
                 }else {
                     System.out.println("= Opção inválida!");
@@ -78,8 +115,8 @@ public class TarefaController {
             opcaoMenu = scan.nextInt();
             switch (opcaoMenu){
                 case 1:
-                    scan.nextLine();
                     do {
+                        scan.nextLine();
                         Tarefa tarefa = new Tarefa();
                         System.out.println("===================================== ADICIONAR TAREFA =====================================");
                         System.out.println("= Digite a descrição da tarefa: ");
@@ -92,10 +129,18 @@ public class TarefaController {
                     }while (Character.toLowerCase(continuarAdd) == 's');
                     break;
                 case 2:
+                    do {
+                        scan.nextLine();
+                        System.out.println("================================= ATUALIZAR TAREFAS =================================");
+                        lerTarefas();
+                        atualizarTarefa();
+                        System.out.println("= Deseja atualizar mais alguma tarefa (s - sim / n - não)? ");
+                        continuarAtualizar = scan.nextLine().charAt(0);
+                    }while (Character.toLowerCase(continuarAtualizar) == 's');
+
                     break;
                 case 3:
                     do {
-
                         scan.nextLine();
                         Menu.excluirMenu();
                         System.out.println("= Digite o que deseja fazer: ");
@@ -111,7 +156,6 @@ public class TarefaController {
                     lerTarefas();
                     break;
                 case 5:
-
                     break;
                 default:
                     System.out.println("= Opção inválida!");
