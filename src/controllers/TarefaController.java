@@ -1,6 +1,6 @@
 package controllers;
 
-import entities.StatusTarefa;
+import entities.StatusItem;
 import entities.Tarefa;
 import services.TarefaService;
 import views.Menu;
@@ -30,9 +30,9 @@ public class TarefaController {
         System.out.println("= Escolha o status atualizado da tarefa (1 - completa / 2 - incompleta): ");
         escolhaStatus = scan.nextInt();
         if (escolhaStatus == 1){
-            tarefa.setStatus(StatusTarefa.COMPLETA);
+            tarefa.setStatus(StatusItem.COMPLETA);
         } else if (escolhaStatus == 2) {
-            tarefa.setStatus(StatusTarefa.INCOMPLETA);
+            tarefa.setStatus(StatusItem.INCOMPLETA);
         }else {
             System.out.println("= Opção inválida!");
         }

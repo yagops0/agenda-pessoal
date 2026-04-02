@@ -1,52 +1,5 @@
 package entities;
 
-public class Tarefa {
-    private static int contador = 1; // simulando um AUTO_INCREMENT - UTILIZANDO UMA VÁRIAVEL ESTÁTICA POIS ELA PERTENCE A CLASSE NÃO A UMA INSTÂNCIA
+public class Tarefa extends Item{
 
-    private int id;
-    private String descricao;
-    private StatusTarefa status = StatusTarefa.INCOMPLETA;
-
-    public Tarefa(){
-        this.id = contador++;
-    }
-
-    public Tarefa(String descricao){
-        this.id = contador++;
-        this.descricao = descricao;
-    }
-
-    public Tarefa(String descricao, StatusTarefa status) {
-
-        this.descricao = descricao;
-        this.status = status;
-        this.id = contador++;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
-    public String getStatusTarefa(){
-        return status.toString();
-    }
-
-    public void setStatus(StatusTarefa status) {
-        this.status = status;
-    }
-
-    @Override
-    public String toString(){
-        return "= Tarefa: " + id +
-                " - Descrição: " + descricao +
-                " - Status: " + status;
-    }
 }

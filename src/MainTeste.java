@@ -1,8 +1,5 @@
 import controllers.TarefaController;
-import entities.StatusTarefa;
-import entities.Tarefa;
 import services.TarefaService;
-import views.Menu;
 
 import java.util.Scanner;
 

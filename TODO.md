@@ -21,7 +21,7 @@ Essa fase será implementação do paradigma de POO para uma melhor legibilidade
 - [x] Separar as responsabilidades por pacotes
   - [x] entities - será o pacote responsável pela camada de modelo
   - [x] service - o pacote para as regras de negócios
-  - [ ] ui/views - será onde os menus serão criados
+  - [x] ui/views - será onde os menus serão criados
 - [x] Encapsulamento
 
 ### Regras de negócios
