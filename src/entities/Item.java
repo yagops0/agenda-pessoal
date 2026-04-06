@@ -6,16 +6,15 @@ public abstract class Item {
     private int id;
     private String descricao;
     private StatusItem statusItem = StatusItem.PENDENTE;
-    private PrioridadeItem prioridadeItem;
 
     public Item(){
         this.id = contador++;
     }
 
-    public Item(String descricao, StatusItem statusItem, PrioridadeItem prioridadeItem) {
+    public Item(String descricao, StatusItem statusItem) {
         this.descricao = descricao;
         this.statusItem = statusItem;
-        this.prioridadeItem = prioridadeItem;
+        this.id = contador++;
     }
 
     public int getId() {
@@ -36,14 +35,6 @@ public abstract class Item {
 
     public void setStatusItem(StatusItem statusItem) {
         this.statusItem = statusItem;
-    }
-
-    public PrioridadeItem getPrioridadeItem() {
-        return prioridadeItem;
-    }
-
-    public void setPrioridadeItem(PrioridadeItem prioridadeItem) {
-        this.prioridadeItem = prioridadeItem;
     }
 
 }

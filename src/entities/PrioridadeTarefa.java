@@ -1,6 +1,6 @@
 package entities;
 
-public enum PrioridadeItem {
+public enum PrioridadeTarefa {
     ALTA,
     MEDIA,
     BAIXA
