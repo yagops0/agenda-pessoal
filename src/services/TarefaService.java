@@ -1,18 +1,20 @@
 package services;
 
+import entities.StatusItem;
 import entities.Tarefa;
-import repositories.TarefaRepository;
+import repositories.DefaultRepository;
+
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class TarefaService implements TarefaRepository {
+public class TarefaService implements DefaultRepository<Tarefa> {
 
     List<Tarefa> tarefas = new ArrayList<>();
 
 
     @Override
-    public void saveTarefa(Tarefa tarefa) {
+    public void save(Tarefa tarefa) {
 
         if (this.findById(tarefa.getId()) == null){
             if (tarefa.getDescricao().isBlank() || tarefa.getDescricao() == null){
@@ -56,6 +58,21 @@ public class TarefaService implements TarefaRepository {
         }
 
         return null;
+    }
+
+    @Override
+    public List<Tarefa> findByStatus(StatusItem statusItem) {
+
+        List<Tarefa> tarefasStatus= new ArrayList<>();
+
+        for (Tarefa t : tarefas){
+            if (t.getStatusItem().toString().equalsIgnoreCase(StatusItem.PENDENTE.toString())){
+                tarefasStatus.add(t);
+            }else if (t.getStatusItem().toString().equalsIgnoreCase(StatusItem.COMPLETO.toString())){
+                tarefasStatus.add(t);
+            }
+        }
+        return tarefasStatus;
     }
 
     @Override
